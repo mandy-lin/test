@@ -329,8 +329,8 @@
 }
 </style>
 <form id="newinv" name="newinv" method='post' action='newinv' onsubmit="return validate(this);">
-  <input type="hidden" name="sell_id" id="sell_id" value="0"> <input type="hidden" name="_token" value="cRPQg489GeU7FaZSIKMLgPrslbDAPAcWPcGXGCL5">
-  <input type="hidden" name="APP_CUSTNO" id="APP_CUSTNO" value="9">
+  <input type="hidden" name="sell_id" id="sell_id" value="0"> <input type="hidden" name="_token" value="LblkbTgvH1q3BEdyZygABDifJrceJB9hFskDARbq">
+  <input type="hidden" name="APP_CUSTNO" id="APP_CUSTNO" value="1">
   <input type="hidden" name="decimalpoint" id="decimalpoint" value="0.01">
   <div class="panel panel-danger">
     <div class="panel-heading">
@@ -346,15 +346,15 @@
       <div class="row">
         <div class="col-md-4">
           <b>發票號碼：</b>
-          <input type='text' class='form-control' name='invocie' placeholder='發票號碼' value='KK62941117' readonly>
+          <input type='text' class='form-control' name='invocie' placeholder='發票號碼' value='KK62941111' readonly>
         </div>
         <div class="col-md-4">
           <b>發票日期：</b>
-          <input type='text' class='form-control' name='sell_date' placeholder='發票日期' value='2021-04-08 21:42:35'>
+          <input type='text' class='form-control' name='sell_date' placeholder='發票日期' value='2021-04-05 12:57:20'>
         </div>
         <div class="col-md-4">
           <b>隨機碼：</b>
-          <input type='text' class='form-control' name='randomnumber' placeholder='隨機碼' value='1975' readonly>
+          <input type='text' class='form-control' name='randomnumber' placeholder='隨機碼' value='5429' readonly>
         </div>
       </div>
       <div class="row">
@@ -395,8 +395,7 @@
     <li><a href="#2" data-toggle="tab">統一編號</a></li>
     <li><a href="#3" data-toggle="tab">載具</a></li>
     <li><a href="#4" data-toggle="tab">備註</a></li>
-    <li><a href="#5" data-toggle="tab">客戶資訊</a></li>
-    <li><a href="#6" data-toggle="tab">零稅</a></li>
+    <li><a href="#5" data-toggle="tab">零稅</a></li>
   </ul>
 
   <div class="tab-content">
@@ -411,7 +410,7 @@
           </h3>
         </div>
         <div class="panel-body" style='margin: 0 auto;'>
-          <button class="btn-default btn-md col-md-1" name='add' id="add" onClick="addrow();">+新增明細</button>
+          <button class="btn btn-default btn-md col-md-1 btn-flat" name='add' id="add" onClick="addrow();">+新增明細</button>
           <div class='col-md-6'>
             <label>條碼輸入</label>
             <form id="newbarcode" name="newbarcode" method='get' onsubmit="barcodeback(this.value)">
@@ -496,17 +495,12 @@
         <div class="panel-heading">
           <h3 class="panel-title">
               <b>
-                  統一編號
+                  客戶資訊
               </b>
           </h3>
         </div>
         <div class="panel-body" style='margin: 0 auto;'>
-          <div class="row">
-            <div class="col-md-12">
-              <input type="number" class='form-control' id='invoice_number' name='invoice_number' onChange="isValidGUI(this.value)" placeholder='統一編號'>
-            </div>
-          </div>
-          <div class="row">
+            <div class="row">
             <div class="col-md-12">
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalLong" onClick="getContent('1','')">
@@ -514,7 +508,66 @@
                 </button>
             </div>
           </div>
+          <div class="row">
+            
+            <div class="col-md-2">
+              <b>統一編號：</b>
+            </div>
+            <div class="col-md-10">  
+              <input type="number" class='form-control' id='invoice_number' name='invoice_number' onChange="isValidGUI(this.value)" min="0" max="99999999" placeholder='統一編號'>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-2">
+              <b>客戶編號：</b>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="CustomerNumber" name="CustomerNumber" placeholder="客戶編號" value="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <b>名稱：</b>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="Name" name="Name" placeholder="名稱" value="">
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-md-2">
+              <b>負責人姓名：</b>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="PersonInCharge" name="PersonInCharge" placeholder="負責人姓名" value="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <b>電話號碼：</b>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="TelephoneNumber" name="TelephoneNumber" 
+            onChange="isTel(this.value)" placeholder="電話號碼" value="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <b>地址：</b>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="Address" name="Address" placeholder="地址" value="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <b>電子郵件地址：</b>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="電子郵件地址" value="" onChange="checkEmail(this.value)">
+            </div>
         </div>
+          </div>    
       </div>
 
       <div class="row">
@@ -654,10 +707,10 @@
             <div class="col-md-10">
               
             
-                                    <input type="checkbox" id="C130" name="C13[]" value="短租自駕">短租自駕
-                                                <input type="checkbox" id="C131" name="C13[]" value="旅運代駕">旅運代駕
-                                                <input type="checkbox" id="C132" name="C13[]" value="長租自駕">長租自駕
-                                                <input type="checkbox" id="C133" name="C13[]" value="長租代駕">長租代駕
+                            <input type="checkbox" id="C130" name="C13[]" value="短租自駕">短租自駕
+                            <input type="checkbox" id="C131" name="C13[]" value="旅運代駕">旅運代駕
+                            <input type="checkbox" id="C132" name="C13[]" value="長租自駕">長租自駕
+                            <input type="checkbox" id="C133" name="C13[]" value="長租代駕">長租代駕
                         
                         </div>
           </div>
@@ -669,9 +722,9 @@
             <div class="col-md-10">
               
             
-                                    <input type="radio" id="C140" name="C14" value="選項一">選項一
-                                                <input type="radio" id="C141" name="C14" value="選項二">選項二
-                                                <input type="radio" id="C142" name="C14" value="選項三">選項三
+                            <input type="radio" id="C140" name="C14" value="選項一">選項一
+                            <input type="radio" id="C141" name="C14" value="選項二">選項二
+                            <input type="radio" id="C142" name="C14" value="選項三">選項三
                         
                         </div>
           </div>
@@ -683,9 +736,9 @@
             <div class="col-md-10">
               
             
-                                    <input type="radio" id="C150" name="C15" value="選項一">選項一
-                                                <input type="radio" id="C151" name="C15" value="選項二">選項二
-                                                <input type="radio" id="C152" name="C15" value="選項三">選項三
+                            <input type="radio" id="C150" name="C15" value="選項一">選項一
+                            <input type="radio" id="C151" name="C15" value="選項二">選項二
+                            <input type="radio" id="C152" name="C15" value="選項三">選項三
                         
                         </div>
           </div>
@@ -708,84 +761,6 @@
     </div>
 
     <div class="tab-pane" id="5">
-
-      <div class="panel panel-danger">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-              <b>
-                  客戶資訊
-              </b>
-          </h3>
-        </div>
-        <div class="panel-body" style='margin: 0 auto;'>
-          <div class="row">
-            <div class="col-md-2">
-              <b>客戶編號：</b>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control" id="CustomerNumber" name="CustomerNumber" placeholder="客戶編號" value="">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-2">
-              <b>名稱：</b>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control" id="Name" name="Name" placeholder="名稱" value="">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-2">
-              <b>負責人姓名：</b>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control" id="PersonInCharge" name="PersonInCharge" placeholder="負責人姓名" value="">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-2">
-              <b>電話號碼：</b>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control" id="TelephoneNumber" name="TelephoneNumber" placeholder="電話號碼" value="">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-2">
-              <b>地址：</b>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control" id="Address" name="Address" placeholder="地址" value="">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-2">
-              <b>電子郵件地址：</b>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="電子郵件地址" value="">
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <input type='button' id="step6" class='tn btn-primary btn-lg btn-block' value='下一步' OnClick="activaTab(6)">
-        </div>
-        <div class="col-md-4">
-          <input type='button' id="step4a" class='tn btn-info btn-lg btn-block' value='上一步' OnClick="activaTab(4)">
-        </div>
-        <div class="col-md-4">
-          <input type='submit' class='tn btn-success btn-lg btn-block' value='發票開立完成'>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="tab-pane" id="6">
 
       <div class="panel panel-danger">
         <div class="panel-heading">
@@ -814,7 +789,7 @@
           <input type='submit' class='tn btn-success btn-lg btn-block' value='發票開立完成'>
         </div>
         <div class="col-md-6">
-          <input type='button' id="step5a" class='tn btn-info btn-lg btn-block' value='上一步' OnClick="activaTab(5)">
+          <input type='button' id="step5a" class='tn btn-info btn-lg btn-block' value='上一步' OnClick="activaTab(4)">
         </div>
       </div>
 
@@ -902,8 +877,9 @@ $("#Barcode").keydown(function(e) {
 <script type="text/javascript" src="https://invdemo.551.com.tw/packages/admin/toastr/build/toastr.min.js"></script>
 <script type="text/javascript" src="https://invdemo.551.com.tw/packages/admin/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
-<script type="text/javascript" src="https://invdemo.551.com.tw/js/newinv.js"></script>
-<script type="text/javascript" src="https://invdemo.551.com.tw/js/newinvback.js"></script>
+<script type="text/javascript" src="newinv.js"></script>
+
+<script type="text/javascript" src="https://invdemo.551.com.tw/js/newinvback.js"></script>    
 <script type="text/javascript" src="https://invdemo.551.com.tw/js/jquery.blockUI.js"></script>
 <script type="text/javascript" src="https://invdemo.551.com.tw/packages/admin/AdminLTE/plugins/iCheck/icheck.min.js"></script>
 <script type="text/javascript" src="https://invdemo.551.com.tw/packages/admin/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
@@ -922,10 +898,10 @@ $("#Barcode").keydown(function(e) {
 <script>
 
     function LA() {}
-    LA.token = "cRPQg489GeU7FaZSIKMLgPrslbDAPAcWPcGXGCL5";
+    LA.token = "LblkbTgvH1q3BEdyZygABDifJrceJB9hFskDARbq";
 
     $.fn.editable.defaults.params = function (params) {
-        params._token = 'cRPQg489GeU7FaZSIKMLgPrslbDAPAcWPcGXGCL5';
+        params._token = 'LblkbTgvH1q3BEdyZygABDifJrceJB9hFskDARbq';
         params._editable = 1;
         params._method = 'PUT';
         return params;

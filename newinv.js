@@ -101,7 +101,7 @@ function getContent2(a,posi,k)
 function isValidGUI(taxId) {
     var invalidList = "00000000,11111111";
     if (/^\d{8}$/.test(taxId) == false || invalidList.indexOf(taxId) != -1) {
-        alert('蝯曹�蝺刻�罸���8�𧢲彍摮�');
+        alert('統一編號需8碼');
     }
 
     var validateOperator = [1, 2, 1, 2, 1, 2, 4, 1],
@@ -118,10 +118,31 @@ function isValidGUI(taxId) {
     if( sum % 10 == 0 || (taxId[6] == "7" && (sum + 1) % 10 == 0)){
         $('#inputcode2').prop("disabled", true );
     }else{
-        alert('蝯曹�蝺刻���厰𥲤隤�');
+        alert('統一編號有錯誤');
     }
 }
 
+function isTel(telId) {
+    var reg =/^(\d{2,3}-?|\(\d{2,3}\))\d{3,4}-?\d{4}|09\d{2}(\d{6}|-\d{3}-\d{3})$/;
+    if(!reg.test(telId)){
+
+        alert('電話號碼輸入有誤！');
+
+    }else{
+
+        return true;
+
+    }
+}
+
+function checkEmail(email) {
+    reg = /^[^\s]+@[^\s]+\.[^\s]{2,3}$/;
+    if (email.match(reg)) {
+        return true;
+    }else{
+        alert('輸入正確email格式');
+    }
+}
 function deleterow(ida){
     $(ida).remove();
     calculatetax();
@@ -270,9 +291,9 @@ function addrow(){
            <input name="AmountF['+ctr+']" id="AmountF_'+pos+'" type="hidden" placeholder="" value="0">\
         </td>\
         <td>\
-           <label><input name="TaxType['+ctr+']" id="TaxTypeX_'+pos+'" type="radio" value="TX" checked onChange="calculatetax()">��厩�</label>\
-           <label><input name="TaxType['+ctr+']" id="TaxTypeF_'+pos+'" type="radio" value="" onChange="calculatetax()">�滨�</label>\
-           <label><input name="TaxType['+ctr+']" id="TaxTypeZ_'+pos+'" type="radio" value="TZ" onChange="calculatetax()">�妟蝔�</label>\
+           <label><input name="TaxType['+ctr+']" id="TaxTypeX_'+pos+'" type="radio" value="TX" checked onChange="calculatetax()">應稅</label>\
+           <label><input name="TaxType['+ctr+']" id="TaxTypeF_'+pos+'" type="radio" value="" onChange="calculatetax()">免稅</label>\
+           <label><input name="TaxType['+ctr+']" id="TaxTypeZ_'+pos+'" type="radio" value="TZ" onChange="calculatetax()">零稅</label>\
         </td>\
         <td>\
           <input class="RelateNumber form-control" name="RelateNumber['+ctr+']" id="RelateNumber_'+pos+'" type="text" placeholder="" value="" autocomplete="off">\
